@@ -1,10 +1,14 @@
 contract Registry {
     struct IPFS {
+    	bytes32 previous;
+    	bytes32 next;
 		string hash1;
 		string hash2;
 	}
-	
-	IPFS public entry;
+
+	uint public size;
+	bytes32 public tail;
+	bytes32 public head;
 	
     mapping (bytes32 => address) public owners;
     mapping (bytes32 => IPFS) public registry;
@@ -21,20 +25,35 @@ contract Registry {
         _
     }
   
-    function publish (bytes32 name, string hash1, string hash2) 
-        isOwner(name) 
+    function publish (bytes32 name, string hash1, string hash2)
+        isOwner(name)
+        returns(bool)
     {
+    	IPFS entry = registry[name];
         entry.hash1 = hash1;
         entry.hash2 = hash2;
         registry[name] = entry;
+        return true;
     }
   
     function init (bytes32 name, string hash1, string hash2)
         isInit(name)
+        returns(bool)
     {
+        IPFS entry = registry[name];
         owners[name] = msg.sender;
         entry.hash1 = hash1;
         entry.hash2 = hash2;
-        registry[name] = entry;
+        
+        if(size == 0){
+        	tail = name;
+        	head = name;
+        } else {
+        	registry[head].next = name;
+        	entry.previous = head;
+        	head = name;
+        }
+        size++;
+        return true;
     }
 }
