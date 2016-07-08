@@ -1,6 +1,13 @@
 contract Registry {
+    struct IPFS {
+		string hash1;
+		string hash2;
+	}
+	
+	IPFS public entry;
+	
     mapping (bytes32 => address) public owners;
-    mapping (bytes32 => bytes) public registry;
+    mapping (bytes32 => IPFS) public registry;
 
     modifier isOwner(bytes32 name)
     {
@@ -14,16 +21,20 @@ contract Registry {
         _
     }
   
-    function publish (bytes32 name, bytes hash) 
+    function publish (bytes32 name, string hash1, string hash2) 
         isOwner(name) 
     {
-        registry[name] = hash;
+        entry.hash1 = hash1;
+        entry.hash2 = hash2;
+        registry[name] = entry;
     }
   
-    function init (bytes32 name, bytes hash)
+    function init (bytes32 name, string hash1, string hash2)
         isInit(name)
     {
         owners[name] = msg.sender;
-        registry[name] = hash;
+        entry.hash1 = hash1;
+        entry.hash2 = hash2;
+        registry[name] = entry;
     }
 }
