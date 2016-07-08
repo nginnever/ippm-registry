@@ -10,7 +10,7 @@ contract Registry {
   
     modifier isInit(bytes32 name)
     {
-        if (owners[name] != 0) throw;
+        if (owners[name] != 0x0) throw;
         _
     }
   
