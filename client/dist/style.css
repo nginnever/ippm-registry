@@ -1,0 +1,156 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+body {
+  background-color: #2d2d2d;
+  font-family: 'Lato';
+  color: white;
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 42px;
+}
+
+ol {
+  margin: 0px;
+  padding: 0px;
+}
+
+ol { 
+  counter-reset: item;
+  list-style-type: none;
+  margin: 0px;
+  padding-right: 11px;
+}
+li { display: block; }
+li:before { 
+    content: counter(item) "  "; 
+    counter-increment: item 
+}
+
+.navigation {
+  width: 200px;
+  text-transform: uppercase;
+  float: right;
+}
+
+.navigation ul {
+  background-color: #37383a;
+  cursor: pointer;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navigation .header {
+  padding: 15px;
+  background-color: #4e5053;
+}
+
+.navigation li {
+  padding: 15px;
+}
+
+.navigation .selected {
+  background-color: #3663AE;
+}
+
+.score {
+  font-size: 18px;
+  margin: 0px 15px 0px 0px;
+  color: #afb3b9;
+  position: relative;
+  left: 18px;
+  top: -12px;
+}
+
+.posts {
+  margin: 15px;
+}
+
+.title {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.title a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.author {
+  font-size: 16px;
+}
+
+/**
+ * Changed to a <b> because React wraps text nodes in
+ * <span> elements if they have non-text-node siblings.
+ */
+ .author b {
+  color: #afb3b9;
+}
+
+.up {
+  background-color: transparent; /* Green */
+  border: none;
+  color: gray;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.down {
+  background-color: transparent; /* Green */
+  border: none;
+  color: gray;
+  margin-top: -30px;
+  padding: 0px;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.logo {
+  text-align: center;
+  margin-top: -85px;
+  margin-left: 200px;
+}
+
+.logoText {
+  text-align: center;
+  margin-top: -85px;
+  margin-left: -30px;
+}
+
+.turba {
+  margin-left: 70px;
+  margin-top: -85px;
+}
+
+.home {
+  text-align: center;
+  padding: 70px 0;
+ 
+}
+
+* {
+ box-sizing: border-box;
+}
+
+#content {
+ margin: 0 auto;
+}
+
+.editor {
+ border: 1px solid gray;
+ padding: 6px;
+ background-color: #333333;
+}
+
+.lineNum {
+  color: gray;
+  list-style-position: inside;
+}
