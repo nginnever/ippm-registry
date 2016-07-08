@@ -2,13 +2,13 @@ contract Registry {
     struct IPFS {
     	bytes32 previous;
     	bytes32 next;
-		string hash1;
-		string hash2;
-	}
+    	string hash1;
+        string hash2;
+    }
 
-	uint public size;
-	bytes32 public tail;
-	bytes32 public head;
+    uint public size;
+    bytes32 public tail;
+    bytes32 public head;
 	
     mapping (bytes32 => address) public owners;
     mapping (bytes32 => IPFS) public registry;
@@ -46,12 +46,12 @@ contract Registry {
         entry.hash2 = hash2;
         
         if(size == 0){
-        	tail = name;
-        	head = name;
+            tail = name;
+            head = name;
         } else {
-        	registry[head].next = name;
-        	entry.previous = head;
-        	head = name;
+            registry[head].next = name;
+            entry.previous = head;
+            head = name;
         }
         size++;
         return true;
