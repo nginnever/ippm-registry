@@ -25,18 +25,19 @@ to interface with the log two functions are exposed.
 
 ### Init
 
-```regInstance.init(key, value)```
-
-- Where key is the index to the items added to the log
-- Value is the content stored in the log (ipfs hash)
+```regInstance.init(name, multihash)```
+Where
+- String name, is the gx package name
+- String multihash, the base58 encoded version of the multihash
 
 The public key used in the signing of the init transaction will be given ownership of the node added to the linked list. From this point on only that public key can change the data in the node.
 
 ### Publish
 
-```regInstance.publish(key, value)```
+```regInstance.publish(name, multihash)```
 
-- Where key is the index to the items added to the log
-- Value is the content stored in the log (ipfs hash)
+Where
+- String name, is the gx package name
+- String multihash, the base58 encoded version of the multihash
 
 The log is set to only allow the public that initialized the entry to be able to publish new information to it. 
