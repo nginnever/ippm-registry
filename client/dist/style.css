@@ -115,14 +115,14 @@ li:before {
 
 .logo {
   text-align: center;
-  margin-top: -85px;
-  margin-left: 200px;
+  margin-top: -15px;
+  margin-left: 0px;
 }
 
 .logoText {
   text-align: center;
   margin-top: -85px;
-  margin-left: -30px;
+  margin-left: 0px;
 }
 
 .turba {
@@ -133,8 +133,34 @@ li:before {
 .home {
   text-align: center;
   padding: 70px 0;
+  margin-top: -75px;
  
 }
+
+.noDisplay {
+  visibility: hidden;
+}
+
+.border {
+  margin: auto;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: grey;
+  
+  width: 360px;
+  position: center;
+}
+
+.nav {
+  text-align: center;
+  color: #fff;
+  position: center;
+}
+
+a:link {color: white; text-decoration: none;}      /* unvisited link */
+a:visited {color: white;}   /* visited link */
+a:hover {color: white;}     /* mouse over link */
+a:active {color: white;}
 
 * {
  box-sizing: border-box;

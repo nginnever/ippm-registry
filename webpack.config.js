@@ -4,11 +4,17 @@ module.exports = {
     './client/src/index.jsx'
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?/,
-      exclude: /node_modules/,
-      loader: 'babel'
-    }]
+    loaders: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      },
+      {
+        test: /\.json?$/,
+        loader: 'json-loader'
+      }
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

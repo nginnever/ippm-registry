@@ -1,6 +1,8 @@
 # gx-registry
 
-A blockchain registry for the Gx package manager
+A blockchain registry for the Gx package 
+
+As with gx, gx-registry is Alpha Quality. It's not perfect yet. It will cost a small amount of money to publish while reading and searching the registry will always be free. All publish fees go to the blockchain miners processing the scripts in the transaction to set the registration. See ToDo for more info.
 
 ## Blockchain
 
