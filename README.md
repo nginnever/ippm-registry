@@ -23,9 +23,9 @@ gx-registry uses an append only log to store the registrations. Each node in the
 
 ## API
 
-to interface with the log, load the contract abi and instantiate with the contract address. Currently the registry is running on a test net.
+to interface with the log, load the contract abi and instantiate with the contract address. Currently the registry is running on a test net. ABI can be found at /contracts/RegistryABI.js
 
-#### contract ABI: ```web3.eth.contract(ABI)``` ABI can be found at /contracts/RegistryABI.js
+#### contract ABI: ```web3.eth.contract(ABI)```
 
 #### contract address:  ```0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd```
 
