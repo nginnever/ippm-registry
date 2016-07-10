@@ -158,8 +158,9 @@ export const newWallet = (entropy) => {
 export const search = (term) => {
   return new Promise((resolve, reject) => {
     const registryContract = web3.eth.contract(abi)
-    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
-    console.log(regInstance)
+    // const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    // server test net
+    const regInstance = registryContract.at('0x7b7ac61b0c77fbde14b61eb31494abd05f4fd0ae')
     const listNode = regInstance.registry(term)
     resolve(listNode)
   })
@@ -169,8 +170,11 @@ export const search = (term) => {
 export const iterate = () => {
   return new Promise((resolve, reject) => {
     const registryContract = web3.eth.contract(abi)
-    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    // const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    // server test net
+    const regInstance = registryContract.at('0x7b7ac61b0c77fbde14b61eb31494abd05f4fd0ae')    
     const size = regInstance.size().c[0]
+    console.log(size)
     var head = 'test'
     var list = []
     for (var i = 0; i < size; i++) {
@@ -187,7 +191,10 @@ export const iterate = () => {
 export const publish = (name, hash) => {
   return new Promise((resolve, reject) => {
     const registryContract = web3.eth.contract(abi)
-    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    // local test net
+    // const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    // server test net
+    const regInstance = registryContract.at('0x7b7ac61b0c77fbde14b61eb31494abd05f4fd0ae')
     var hash1 = hash.substring(0, 17)
     var hash2 = hash.substring(17, hash.length)
     regInstance.init(name, hash1, hash2, {from: web3.eth.accounts[0], gas:150000}, (err, txhash) => {
@@ -204,8 +211,11 @@ export const init = (provider) => {
       web3 = new Web3(web3.currentProvider);
     } else {
       // set the provider you want from Web3.providers
-      web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.0.28:8545"))
-      //web3 = new Web3(new Web3.providers.HttpProvider("http://149.56.133.176:8545"))
+      // local server
+      //web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.0.28:8545"))
+
+      // demo server
+      web3 = new Web3(new Web3.providers.HttpProvider("http://149.56.133.176:8545"))
     } 
   })
   // options: provider

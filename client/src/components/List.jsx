@@ -44,6 +44,12 @@ export const List = React.createClass({
         </div>
         <div className="home">
         <table className="border">
+            <thead>
+              <tr>
+                <th>Package Name</th>
+                <th>IPFS hash</th>
+              </tr>
+            </thead>
           <tbody>
             {rows}
           </tbody>
