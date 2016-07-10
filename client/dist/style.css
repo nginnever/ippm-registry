@@ -30,6 +30,16 @@ li:before {
     counter-increment: item 
 }
 
+.table {
+  margin: auto;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: grey;
+  
+  width: 560px;
+  position: center;
+}
+
 .navigation {
   width: 200px;
   text-transform: uppercase;
@@ -160,7 +170,7 @@ li:before {
 
 a:link {color: white; text-decoration: none;}      /* unvisited link */
 a:visited {color: white;}   /* visited link */
-a:hover {color: white;}     /* mouse over link */
+a:hover {color: blue;}     /* mouse over link */
 a:active {color: white;}
 
 * {

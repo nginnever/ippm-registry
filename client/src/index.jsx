@@ -10,6 +10,7 @@ import App from './components/App'
 import {HomeContainer} from './components/Home'
 import {NotFoundContainer} from './components/NotFound'
 import {PublishContainer} from './components/Publish'
+import {ListContainer} from './components/List'
 import {api} from './services'
 
 
@@ -24,6 +25,7 @@ store.dispatch({
 const routes = <Route component={App}>
   <Route path="/" component={HomeContainer} />
   <Route path="/publish" component={PublishContainer} />
+  <Route path="/list" component={ListContainer} />
   <Route path='*' component={NotFoundContainer} />
 </Route>
 

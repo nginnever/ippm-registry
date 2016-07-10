@@ -15,19 +15,45 @@ export const Home = React.createClass({
     })
   },
   handleSearch: function() {
-    this.setState({
-      searchItem: true,
-      package: 
-        <div>
-          {this.refs.package.value}
-        </div>
-    })
     //hashHistory.push('/id/'+this.refs.cgethaccount.value)
     this.props.api.init()
-    this.props.api.search(this.refs.package.value).then((term) => {
-      console.log(term + '1')
+    this.props.api.search(this.refs.package.value).then((ipfs) => {
+      const url = "http://ipfs.io/ipfs/" + ipfs[2] + ipfs[3]
+      if (!ipfs[2]) {
+        this.setState({
+          searchItem: true,
+          package: 
+            <div>
+             <table className="table">
+               <tbody>
+                <tr>
+                  <th>This package name has not been registered yet!</th>
+                </tr>
+              </tbody>
+            </table> 
+          </div>
+        })
+      } else {
+        this.setState({
+          searchItem: true,
+          package: 
+            <div>
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <th>package name</th>
+                    <th>ipfs multihash</th>
+                  </tr>
+                  <tr>
+                    <td>{this.refs.package.value}</td>
+                    <td><a href={url}>{ipfs[2]}{ipfs[3]}</a></td>
+                  </tr>
+                </tbody>
+              </table> 
+            </div>
+        })
+      }
     })
-    //console.log(this.refs.package.value)
   },
   render: function() {
     return (
@@ -36,7 +62,9 @@ export const Home = React.createClass({
         <p>
           <Link to={'/'}>Search   </Link>
           -
-          <Link to={'/publish'}>   Publish</Link>
+          <Link to={'/publish'}>   Publish   </Link>
+          -
+          <Link to={'/list'}>   List</Link>
         </p>
         </div>
         <div className="home">

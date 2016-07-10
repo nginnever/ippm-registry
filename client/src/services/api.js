@@ -1,12 +1,110 @@
 import Web3 from 'web3'
-import lightwallet from 'eth-lightwallet'
-import web3hook from 'hooked-web3-provider'
+// import lightwallet from 'eth-lightwallet'
+// import web3hook from 'hooked-web3-provider'
 
 let web3
-//import {createDaemon} from '../utils/ipfs'
+// import {createDaemon} from '../utils/ipfs'
 
+const abi = 
+  [{
+    "constant": true,
+    "inputs": [],
+    "name": "tail",
+    "outputs": [{
+      "name": "",
+      "type": "bytes32"
+    }],
+    "type": "function"
+  }, {
+    "constant": false,
+    "inputs": [{
+      "name": "name",
+      "type": "bytes32"
+    }, {
+      "name": "hash1",
+      "type": "string"
+    }, {
+      "name": "hash2",
+      "type": "string"
+    }],
+    "name": "publish",
+    "outputs": [{
+      "name": "",
+      "type": "bool"
+    }],
+    "type": "function"
+  }, {
+    "constant": true,
+    "inputs": [{
+      "name": "",
+      "type": "bytes32"
+    }],
+    "name": "registry",
+    "outputs": [{
+      "name": "previous",
+      "type": "bytes32"
+    }, {
+      "name": "next",
+      "type": "bytes32"
+    }, {
+      "name": "hash1",
+      "type": "string"
+    }, {
+      "name": "hash2",
+      "type": "string"
+    }],
+    "type": "function"
+  }, {
+    "constant": true,
+    "inputs": [],
+    "name": "head",
+    "outputs": [{
+      "name": "",
+      "type": "bytes32"
+    }],
+    "type": "function"
+  }, {
+    "constant": true,
+    "inputs": [],
+    "name": "size",
+    "outputs": [{
+      "name": "",
+      "type": "uint256"
+    }],
+    "type": "function"
+  }, {
+    "constant": false,
+    "inputs": [{
+      "name": "name",
+      "type": "bytes32"
+    }, {
+      "name": "hash1",
+      "type": "string"
+    }, {
+      "name": "hash2",
+      "type": "string"
+    }],
+    "name": "init",
+    "outputs": [{
+      "name": "",
+      "type": "bool"
+    }],
+    "type": "function"
+  }, {
+    "constant": true,
+    "inputs": [{
+      "name": "",
+      "type": "bytes32"
+    }],
+    "name": "owners",
+    "outputs": [{
+      "name": "",
+      "type": "address"
+    }],
+    "type": "function"
+  }]
 
- function getIPFS () {
+/* function getIPFS () {
     if (daemon) return Promise.resolve(daemon)
 
     return createDaemon().then((ipfs) => {
@@ -55,31 +153,61 @@ export const newWallet = (entropy) => {
   console.log(randomSeed)
 
 }
+*/
 
 export const search = (term) => {
   return new Promise((resolve, reject) => {
-
-    resolve(term)
+    const registryContract = web3.eth.contract(abi)
+    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    console.log(regInstance)
+    const listNode = regInstance.registry(term)
+    resolve(listNode)
   })
 
 }
 
-export const init = () => {
-  if (typeof web3 !== 'undefined') {
-    web3 = new Web3(web3.currentProvider);
-  } else {
-    // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.0.28:8545"));
-    //web3 = new web3()
-  }
-  
-  //newAddress()
-  web3.eth.getBlock(48, function(error, result){
-    if(!error)
-      console.log(result)
-    else
-      console.error(error);
-  })  
+export const iterate = () => {
+  return new Promise((resolve, reject) => {
+    const registryContract = web3.eth.contract(abi)
+    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    const size = regInstance.size().c[0]
+    var head = 'test'
+    var list = []
+    for (var i = 0; i < size; i++) {
+      const element = regInstance.registry(head)
+      list.push({name: element[0], hash:element[2]+element[3]})
+      head = element[1]
+    }
+    resolve(list)
+  })
 
+}
+
+
+export const publish = (name, hash) => {
+  return new Promise((resolve, reject) => {
+    const registryContract = web3.eth.contract(abi)
+    const regInstance = registryContract.at('0xb5f546d5bc8ab6ce0a4091c8bf906800627912cd')
+    var hash1 = hash.substring(0, 17)
+    var hash2 = hash.substring(17, hash.length)
+    regInstance.init(name, hash1, hash2, {from: web3.eth.accounts[0], gas:150000}, (err, txhash) => {
+      resolve(txhash)
+    })
+
+  })
+
+}
+
+export const init = (provider) => {
+  return new Promise((resolve, reject) => {
+    if (typeof web3 !== 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+    } else {
+      // set the provider you want from Web3.providers
+      web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.0.28:8545"))
+      //web3 = new Web3(new Web3.providers.HttpProvider("http://149.56.133.176:8545"))
+    } 
+  })
+  // options: provider
 }
 
