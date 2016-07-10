@@ -134,6 +134,7 @@ li:before {
   text-align: center;
   padding: 70px 0;
   margin-top: -75px;
+  position: center;
  
 }
 
@@ -147,7 +148,7 @@ li:before {
   border-width: 2px;
   border-color: grey;
   
-  width: 360px;
+  width: 560px;
   position: center;
 }
 
