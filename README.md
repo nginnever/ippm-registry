@@ -55,10 +55,46 @@ The public key used in the signing of the init transaction will be given ownersh
 
 ### Publish
 
-```regInstance.publish(name, multihash)```
+``regInstance.publish(name, multihash)``
 
 Where
 - String name, is the gx package name
 - String multihash, the base58 encoded version of the multihash
 
 The log is set to only allow the public key that initialized the entry to be able to publish new information to it. 
+
+
+### Get Log Size
+
+``regInstance.size()``
+
+Returns an interger number of packages regiestered in the log
+
+
+### Get Log Head
+
+``regInstance.head()``
+
+Returns the key for the element at the head of the linked list
+
+
+### Get Log Tail
+
+``regInstance.tail()``
+
+Returns the key for the element at the tail of the linked list
+
+
+### Get Log Element by key
+
+``regInstance.registry(key)``
+
+Where
+
+- key is a string value representing the package name
+- Returns an array struct with values
+ - next: key of the next element in the list
+ - previous: key of the previous element in the list
+ - hash: the ipfs multihash of the package 
+ 
+More fields can be added to the struct like a version number in the future
