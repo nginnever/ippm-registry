@@ -42,7 +42,7 @@ var regInstance = eth.contract(ABI).at(Address)
 ```
 
 
-Two functions are exposed.
+## API
 
 ### Init
 
