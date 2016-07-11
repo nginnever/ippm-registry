@@ -2,7 +2,7 @@
 
 A blockchain registry for the [gx package manager tool](https://github.com/whyrusleeping/gx)
 
-As with gx, gx-registry is Alpha Quality. It's not perfect yet. The contract for the registry currently only resides on a test net but will be moved to the main chain when tested or if interest is shown. It will cost a small amount of money to publish while reading and searching the registry will always be free. All publish fees go to the blockchain miners processing the scripts in the transaction to set the registration. See ToDo for more info.
+As with gx, gx-registry is Alpha Quality. It's not perfect yet. The contract for the registry currently only resides on a test net but will be moved to the main chain when tested or if interest is shown. It will cost a small amount of money to publish while reading and searching the registry will always be free. All publish fees go to the blockchain miners to set the registration.
 
 ## Client
 
@@ -96,3 +96,15 @@ Where
  - hash: the ipfs multihash of the package 
  
 More fields can be added to the struct like a version number in the future
+
+
+## To Do
+
+- integrate with go-gx
+ - publish repo hashs from go-gx command line
+- integrate with npm-registry @diasdavid 
+- integrate js-ipfs into web app
+ - Serve app through js-ipfs in browser 
+ - Create upload a repo
+ - Add information page hash to registry meta info
+
