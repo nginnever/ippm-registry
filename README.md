@@ -42,8 +42,6 @@ var regInstance = eth.contract(ABI).at(Address)
 ```
 
 
-## API
-
 ### Init
 
 ```regInstance.init(name, multihash)```
