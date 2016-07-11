@@ -4,6 +4,10 @@ A blockchain registry for the [gx package manager tool](https://github.com/whyru
 
 As with gx, gx-registry is Alpha Quality. It's not perfect yet. The contract for the registry currently only resides on a test net but will be moved to the main chain when tested or if interest is shown. It will cost a small amount of money to publish while reading and searching the registry will always be free. All publish fees go to the blockchain miners processing the scripts in the transaction to set the registration. See ToDo for more info.
 
+## Client
+
+There is a react application distributed with ipfs that demos an interface with the registry contract with a testnet hosted in California. You can access the app by running a local go ipfs or js-ipfs node and view that hash through your gateway at ```http://localhost:8080/ipfs/QmTWJQ7bpGrnS3RcXAKwRufAm7bxABWRgzQmAccWb7f82F```
+
 ## Blockchain
 
 The goal of using a blockchain is to track the head of a list of published packages. This uses [ipfs-ethereum-log](https://github.com/nginnever/ipfs-ethereum-log) to accomplish this.
