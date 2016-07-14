@@ -24,6 +24,8 @@ The contract will register the ```msg.sender``` public key with the provided hum
 
 gx-registry uses an append only log to store the registrations. Each node in the list is a mapping from ```<key> name => <struct> IPFS``` where ```IPFS``` is a struct memory block containing the ipfs hash of the repository and any other desired meta information. 
 
+The combination of recording the state update operations in the log and storing the state in content addressable ipfs objects allows for state updates to be broadcast to clients at approcimately the speed of the block confirmation on the blockchain running the log.
+
 
 ## API
 
