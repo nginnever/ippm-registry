@@ -25,10 +25,11 @@ export const List = React.createClass({
     var rows = []
     console.log(this.state.list)
     this.state.list.forEach((elem, index) => {
+      const url = "http://ipfs.io/ipfs/" + elem.hash
       rows.push(          
         <tr key={index}>
             <td>{elem.name}</td>
-            <td>{elem.hash}</td>
+            <td><a href={url}>{elem.hash}</a></td>
         </tr>)
     })
     return (
