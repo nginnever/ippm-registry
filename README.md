@@ -6,7 +6,7 @@ As with ippm, ippm-registry is Alpha Quality. It's not perfect yet. The contract
 
 ## Client
 
-There is a react application distributed with ipfs that demos an interface with the registry contract with a testnet hosted in California. You can access the app by running a local go ipfs or js-ipfs node and view that hash through your gateway at ```http://localhost:8080/ipfs/QmTWJQ7bpGrnS3RcXAKwRufAm7bxABWRgzQmAccWb7f82F```
+There is a react application distributed with ipfs that demos an interface with the registry contract with a testnet hosted in California. You can access the app by running a local go ipfs or js-ipfs node and view that hash through your gateway at ```http://localhost:8080/ipfs/QmSGXf6KXUZFUspCArTnLeYWm8dRK8cYiahcD8rLcbeY6b```
 
 ## Blockchain
 
