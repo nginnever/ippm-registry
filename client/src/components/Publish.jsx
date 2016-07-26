@@ -71,9 +71,9 @@ export const Publish = React.createClass({
         <br/>
         <br/>
         <div className="logoText">
-          <h1>gx registry</h1>
+          <h1>ippm registry</h1>
           <div className="logo">
-            <a href="https://github.com/nginnever/gx-registry">
+            <a href="https://github.com/nginnever/ippm-registry">
               <img src={'Octicons-mark-github.svg.png'} style={{height: 50}} />
             </a>
           </div>

@@ -104,56 +104,6 @@ const abi =
     "type": "function"
   }]
 
-/* function getIPFS () {
-    if (daemon) return Promise.resolve(daemon)
-
-    return createDaemon().then((ipfs) => {
-      daemon = ipfs
-      return daemon
-    })
-  } 
-
-function setWeb3Provider(keystore) {
-  var web3Provider = new web3hook({
-    host: "http://localhost:8545",
-    transaction_signer: keystore
-  })
-
-  web3.setProvider(web3Provider)
-}
-
-function newAddress(password) {
-
-  if (password == undefined) {
-    password = prompt('Enter password', 'password')
-  }
-
-  lightwallet.keystore.deriveKeyFromPassword()
-}
-
-export const newWallet = (entropy) => {
-  const extraEntropy = entropy
-  const randomSeed = lightwallet.keystore.generateRandomSeed(extraEntropy)
-  const password = prompt('Your wallet seed is: ' + randomSeed + '\n\n' + 'Please enter a password to encypt your seed', 'password')
-
-  lightwallet.keystore.deriveKeyFromPassword(password, (err, pwDerivedKey) => {
-    var newKeystore = new lightwallet.keystore(
-      randomSeed,
-      pwDerivedKey
-    )
-    console.log(newKeystore)
-    var test = newKeystore.isDerivedKeyCorrect(pwDerivedKey)
-    console.log('weee')
-    newKeystore.generateNewAddress(pwDerivedKey)
-    //console.log(newKeystore.getAddresses())
-    //newAddresses(password)
-    setWeb3Provider(newKeystore)
-
-  })
-  console.log(randomSeed)
-
-}
-*/
 
 export const search = (term) => {
   return new Promise((resolve, reject) => {
@@ -176,10 +126,15 @@ export const iterate = () => {
     const size = regInstance.size().c[0]
     console.log(size)
     var head = 'test'
+    var next
     var list = []
     for (var i = 0; i < size; i++) {
       const element = regInstance.registry(head)
-      list.push({name: element[0], hash:element[2]+element[3]})
+      console.log(i)
+      if (i != 0) {
+        list.push({name: next, hash:element[2]+element[3]})
+      }
+      next = hex_to_ascii(element[1].slice(2,element[0].length))
       head = element[1]
     }
     resolve(list)
@@ -187,6 +142,14 @@ export const iterate = () => {
 
 }
 
+function hex_to_ascii(str1) {
+  var hex  = str1.toString()
+  var str = ''
+  for (var n = 0; n < hex.length; n += 2) {
+    str += String.fromCharCode(parseInt(hex.substr(n, 2), 16))
+  }
+  return str
+} 
 
 export const publish = (name, hash) => {
   return new Promise((resolve, reject) => {
