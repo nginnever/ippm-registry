@@ -1,5 +1,7 @@
 # ippm-registry
 
+Project on hold, see npm on ipfs
+
 A blockchain registry for the [interplanetary package manager tool](https://github.com/nginnever/ippm)
 
 As with ippm, ippm-registry is Alpha Quality. It's not perfect yet. The contract for the registry currently only resides on a test net but will be moved to the main chain when tested or if interest is shown. It will cost a small amount of money to publish while reading and searching the registry will always be free. All publish fees go to the blockchain miners to set the registration.
